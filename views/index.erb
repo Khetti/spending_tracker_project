@@ -1,10 +1,11 @@
+<h1>views/index.erb</h1>
 <h1>All Transactions</h1>
 <ul>
-  <% @transactions.each do |transaction| %>
+  <% for transaction in @transactions %>
     <li>
-
+      <p>Merchant: <%= transaction.merchant.name %></p>
       <p>Amount: <%= transaction.amount %></p>
-
+      <p>Tags: <%= transaction.tag.type %></p>
     </li>
   <% end %>
 </ul>
