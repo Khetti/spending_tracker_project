@@ -1,1 +1,20 @@
+<!-- Logo header for styling -->
   <a href="/"><img src="../images/Logo.png" alt="logo" height = "70"></a>
+
+
+
+<!-- Forms for edit and delete functions on merchants -->
+  <% @merchants.each do |merchant| %>
+    <p>Name: <%= merchant.name %>
+    <form action="/merchants/<%= merchant.id %>/edit" method="POST">
+    <input class="button" type="submit" value="edit">
+    </form>
+    <form action="/merchants/<%= merchant.id %>/delete" method="POST">
+    <input class="button" type="submit" value="delete">
+    </form>
+  <% end %>
+
+<!-- Form button for creating a new Merchant -->
+  <form action="/merchants/new" method="POST">
+  <input class="button" type="submit" value="new">
+  </form>

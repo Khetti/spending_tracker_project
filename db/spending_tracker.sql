@@ -5,19 +5,19 @@ DROP TABLE tags;
 CREATE TABLE merchants
 (
   id SERIAL PRIMARY KEY,
-  name VARCHAR
+  name VARCHAR not null
 );
 
 CREATE TABLE tags
 (
   id SERIAL PRIMARY KEY,
-  type VARCHAR
+  type VARCHAR not null
 );
 
 CREATE TABLE transactions
 (
   id SERIAL PRIMARY KEY,
-  amount DECIMAL(9,2),
+  amount DECIMAL(9,2) not null,
   merchant_id INT REFERENCES merchants(id),
   tag_id INT REFERENCES tags(id)
 );
