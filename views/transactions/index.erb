@@ -5,7 +5,7 @@
   <% for transaction in @transactions %>
       <p>Merchant: <%= transaction.merchant.name %></p>
       <p>Amount: <%= transaction.amount %></p>
-      <p>Tags: <%= transaction.tag.type %></p>
+      <p>Tags: <%= transaction.tag.type %></p><br>
   <% end %>
 
 </ul>
