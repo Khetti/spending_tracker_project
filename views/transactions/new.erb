@@ -7,7 +7,7 @@
     Select merchant:
     <select name="merchant_id" id="merchant">
       <% for merchant in @merchants %>
-      <option value="<%= merchant.id %>"><%= merchant.name %></option>
+        <option value="<%= merchant.id %>"><%= merchant.name %></option>
       <% end %>
     </select>
   </label>
@@ -16,7 +16,7 @@
     Select tag:
     <select name="tag_id" id="tag">
       <% for tag in @tags %>
-      <option value="<%= tag.id %>"><%= tag.type %></option>
+        <option value="<%= tag.id %>"><%= tag.type %></option>
       <% end %>
     </select>
   </label>

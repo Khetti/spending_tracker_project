@@ -2,17 +2,17 @@
 <ul>
 
   <% @transactions.each do |transaction| %>
-      <p>Merchant: <%= transaction.merchant.name %></p>
-      <p>Amount: £<%= transaction.amount %></p>
-      <p>Tags: <%= transaction.tag.type %></p>
-      <p>
-        <form method="POST" action="/transactions/<%= transaction.id %>/edit">
-          <input class="button" type="submit" value="edit">
-        </form>
-      <p>
-        <form method="POST" action="/transactions/<%= transaction.id %>/delete">
-          <input class="button" type="submit" value="delete">
-        </form>
+    <p>Merchant: <%= transaction.merchant.name %></p>
+    <p>Amount: £<%= transaction.amount %></p>
+    <p>Tags: <%= transaction.tag.type %></p>
+    <p>
+      <form action="/transactions/<%= transaction.id %>/edit" method="post">
+        <input class="button" type="submit" value="edit">
+      </form>
+    <p>
+      <form action="/transactions/<%= transaction.id %>/delete" method="post">
+        <input class="button" type="submit" value="delete">
+      </form>
       <br>
   <% end %>
 
