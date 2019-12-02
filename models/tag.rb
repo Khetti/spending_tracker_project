@@ -36,4 +36,13 @@ class Tag
     return results.map{ |tag| Tag.new(tag) }
   end
 
+  # returns all tags matching a specific id
+    def self.find(id)
+      sql = "SELECT * FROM tags
+      WHERE id = $1;"
+      values = [id]
+      results = SqlRunner.run(sql, values)
+      return Tag.new(results.first)
+    end
+
 end

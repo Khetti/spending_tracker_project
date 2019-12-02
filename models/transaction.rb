@@ -58,4 +58,11 @@ class Transaction
     return Tag.new(results.first)
   end
 
+  def self.destroy(id)
+    sql = "DELETE FROM transactions
+    WHERE id = $1;"
+    values = [id]
+    SqlRunner.run(sql,values)
+  end
+
 end
