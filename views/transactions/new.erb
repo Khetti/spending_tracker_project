@@ -1,5 +1,8 @@
 <form action="/transactions" method="post">
 
+  <label for="amount">Amount: </label>
+  <input type="number" name="amount" id="amount">
+
   <label>
     Select merchant:
     <select name="merchant_id">
@@ -17,5 +20,7 @@
       <% end %>
     </select>
   </label>
+
+  <input type="submit" value="Add Transaction">
 
 </form>
