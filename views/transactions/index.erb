@@ -3,8 +3,16 @@
 
   <% for transaction in @transactions %>
       <p>Merchant: <%= transaction.merchant.name %></p>
-      <p>Amount: <%= transaction.amount %></p>
-      <p>Tags: <%= transaction.tag.type %></p><br>
+      <p>Amount: £<%= transaction.amount %></p>
+      <p>Tags: <%= transaction.tag.type %></p>
+      <p><form action="index.html" method="post">
+
+      </form>
+      <p>
+        <form method="POST" action="/transactions/<%= transaction.id %>/delete">
+          <input class="button" type="submit" value="delete">
+        </form>
+      <br>
   <% end %>
 
 </ul>

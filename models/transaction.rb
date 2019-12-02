@@ -11,11 +11,6 @@ class Transaction
     @tag_id = details['tag_id'].to_i
   end
 
-  def self.delete_all()
-    sql = "DELETE FROM transactions"
-    SqlRunner.run(sql)
-  end
-
   def save()
     sql = "INSERT INTO transactions
     (
@@ -40,6 +35,30 @@ class Transaction
     return results.map{ |transaction| Transaction.new(transaction) }
   end
 
+  # return a specific transaction by id
+  def self.find(id)
+    sql = "SELECT * FROM transactions
+    WHERE id = $1"
+    values = [id]
+    transaction = SqlRunner.run(sql, values)
+    result = Transaction.new(transaction.first)
+    return result
+  end
+
+  # delete a transaction matching an id
+  def self.delete(id)
+    sql = "DELETE FROM transactions
+    WHERE id = $1;"
+    values = [id]
+    SqlRunner.run(sql,values)
+  end
+
+  # delete all transactions; called in seeds.rb
+  def self.delete_all()
+    sql = "DELETE FROM transactions"
+    SqlRunner.run(sql)
+  end
+
   # allows access to merchant properties for view purposes
   def merchant()
     sql = "SELECT * FROM merchants
@@ -56,13 +75,6 @@ class Transaction
     values = [@tag_id]
     results = SqlRunner.run(sql,values)
     return Tag.new(results.first)
-  end
-
-  def self.destroy(id)
-    sql = "DELETE FROM transactions
-    WHERE id = $1;"
-    values = [id]
-    SqlRunner.run(sql,values)
   end
 
 end
