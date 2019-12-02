@@ -12,24 +12,17 @@ get '/transactions' do
   erb (:"transactions/index")
 end
 
+# DESTROY
+post '/transactions/:id/delete' do
+  transaction = Transaction.delete(params[:id])
+  redirect to("/transactions")
+end
+
 # NEW
 get '/transactions/new' do
   @merchants = Merchant.all()
   @tags = Tag.all()
   erb(:"transactions/new")
-end
-
-# SHOW
-get '/transactions/:id' do
-  @transaction = Transaction.find(params[:id])
-  erb(:"transactions/show")
-end
-
-# CREATE
-post '/transactions' do
-  transaction = Transaction.new(params)
-  transaction.save()
-  redirect to("/transactions")
 end
 
 # EDIT
@@ -46,8 +39,15 @@ post '/transactions/:id' do
   redirect to('/transactions')
 end
 
-# DESTROY
-post '/transactions/:id/delete' do
-  Transaction.delete(params[:id])
+# SHOW
+get '/transactions/:id' do
+  @transaction = Transaction.find(params[:id])
+  erb(:"transactions/show")
+end
+
+# CREATE
+post '/transactions' do
+  transaction = Transaction.new(params)
+  transaction.save()
   redirect to("/transactions")
 end

@@ -53,7 +53,7 @@ class Transaction
   end
 
   # return a specific transaction by id
-  def self.find(id)
+  def find(id)
     sql = "SELECT * FROM transactions
     WHERE id = $1"
     values = [id]
@@ -76,8 +76,14 @@ class Transaction
     SqlRunner.run(sql)
   end
 
+  def self.total()
+    sql = "SELECT SUM(amount)
+    FROM transactions;"
+    return SqlRunner.run(sql)[0]['sum']
+  end
+
   # allows access to merchant properties for view purposes
-  def merchant()
+  def self.merchant()
     sql = "SELECT * FROM merchants
     WHERE id = $1;"
     values = [@merchant_id]
@@ -86,7 +92,7 @@ class Transaction
   end
 
   # allows access to merchant properties for view purposes
-  def tag()
+  def self.tag()
     sql = "SELECT * FROM tags
     WHERE id = $1;"
     values = [@tag_id]
