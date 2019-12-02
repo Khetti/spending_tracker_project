@@ -29,4 +29,11 @@ class Merchant
     @id = results.first()['id'].to_i
   end
 
+  # returns all merchants for use in views
+  def self.all()
+    sql = "SELECT * FROM merchants;"
+    results = SqlRunner.run(sql)
+    return results.map{ |merchant| Merchant.new(merchant) }
+  end
+
 end

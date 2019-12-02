@@ -33,6 +33,14 @@ class Transaction
     @id = results.first()['id'].to_i
   end
 
+  # returns all transactions for use in views
+  def self.all()
+    sql = "SELECT * FROM transactions;"
+    results = SqlRunner.run(sql)
+    return results.map{ |transaction| Transaction.new(transaction) }
+  end
+
+  # allows access to merchant properties for view purposes
   def merchant()
     sql = "SELECT * FROM merchants
     WHERE id = $1;"
@@ -41,6 +49,7 @@ class Transaction
     return Merchant.new(results.first)
   end
 
+  # allows access to merchant properties for view purposes
   def tag()
     sql = "SELECT * FROM tags
     WHERE id = $1;"

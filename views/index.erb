@@ -1,3 +1,10 @@
 <h1>All Transactions</h1>
-<%= @transactions.each do |transaction| %>
-  <p>Merchant: <%=  %></p>
+<ul>
+  <% @transactions.each do |transaction| %>
+    <li>
+
+      <p>Amount: <%= transaction.amount %></p>
+
+    </li>
+  <% end %>
+</ul>
