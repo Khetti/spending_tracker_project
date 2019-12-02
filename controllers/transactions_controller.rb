@@ -14,7 +14,7 @@ end
 
 # SHOW
 get '/transactions/:id' do
-  @transaction = Transaction.find(params[:id])
+  transaction = Transaction.find(params[:id])
   erb(:show)
 end
 
@@ -22,26 +22,29 @@ end
 get '/transactions/new' do
   @merchants = Merchant.all()
   @tags = Tag.all()
-  erb (:"transactions/new")
+  erb(:"transactions/new")
 end
 
 # CREATE
 post '/transactions' do
   transaction = Transaction.new(params)
   transaction.save()
-  redirect to('/transactions')
+  redirect to("/transactions")
 end
 
 # EDIT
 get '/transactions/:id/edit' do
-  transaction = Transaction.find(params[:id])
-  erb(:edit)
+  id = params[:id].to_i()
+  @transaction = Transaction.find(id)
+  @merchants = Merchant.all()
+  @tags = Tag.all()
+  erb(:"transactions/edit")
 end
 
 # UPDATE
 post '/transactions/:id' do
   Transaction.new(params).update()
-  redirect to '/transactions'
+  redirect to('/transactions')
 end
 
 # DESTROY
