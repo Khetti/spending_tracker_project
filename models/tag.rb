@@ -8,5 +8,25 @@ class Tag
     @id = details['id'].to_i if details['id']
     @type = details['type']
   end
-  
+
+  def self.delete_all()
+    sql = "DELETE FROM tags"
+    SqlRunner.run(sql)
+  end
+
+  def save()
+    sql = "INSERT INTO tags
+    (
+      type
+    )
+    VALUES
+    (
+      $1
+    )
+    RETURNING id"
+    values = [@type]
+    results = SqlRunner.run(sql, values)
+    @id = results.first()['id'].to_i
+  end
+
 end
