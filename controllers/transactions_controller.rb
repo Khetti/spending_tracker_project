@@ -12,17 +12,17 @@ get '/transactions' do
   erb (:"transactions/index")
 end
 
-# SHOW
-get '/transactions/:id' do
-  @transaction = Transaction.find(params[:id])
-  erb(:"transactions/show")
-end
-
 # NEW
 get '/transactions/new' do
   @merchants = Merchant.all()
   @tags = Tag.all()
   erb(:"transactions/new")
+end
+
+# SHOW
+get '/transactions/:id' do
+  @transaction = Transaction.find(params[:id])
+  erb(:"transactions/show")
 end
 
 # CREATE
