@@ -1,4 +1,10 @@
 <h1>Tags</h1>
-<% @tags.each do |tag| %>
-  <p>Type: <%= tag.type %></p>
-<% end %>
+<ul>
+
+<a href="/tags/new">New Tag</a>
+
+  <% @tags.each do |tag| %>
+    <p>Type: <%= tag.type %></p>
+  <% end %>
+
+</ul>
