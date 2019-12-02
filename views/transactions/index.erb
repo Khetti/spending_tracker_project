@@ -1,7 +1,7 @@
 <h1>All Transactions</h1>
 <ul>
 
-  <% for transaction in @transactions %>
+  <% @transactions.each do |transaction| %>
       <p>Merchant: <%= transaction.merchant.name %></p>
       <p>Amount: £<%= transaction.amount %></p>
       <p>Tags: <%= transaction.tag.type %></p>

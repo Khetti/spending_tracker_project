@@ -14,8 +14,8 @@ end
 
 # SHOW
 get '/transactions/:id' do
-  transaction = Transaction.find(params[:id])
-  erb(:show)
+  @transaction = Transaction.find(params[:id])
+  erb(:"transactions/show")
 end
 
 # NEW
@@ -34,8 +34,7 @@ end
 
 # EDIT
 get '/transactions/:id/edit' do
-  id = params[:id].to_i()
-  @transaction = Transaction.find(id)
+  @transaction = Transaction.find(params[:id])
   @merchants = Merchant.all()
   @tags = Tag.all()
   erb(:"transactions/edit")
