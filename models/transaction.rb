@@ -53,7 +53,7 @@ class Transaction
   end
 
   # return a specific transaction by id
-  def find(id)
+  def self.find(id)
     sql = "SELECT * FROM transactions
     WHERE id = $1"
     values = [id]
@@ -83,7 +83,7 @@ class Transaction
   end
 
   # allows access to merchant properties for view purposes
-  def self.merchant()
+  def merchant()
     sql = "SELECT * FROM merchants
     WHERE id = $1;"
     values = [@merchant_id]
@@ -92,7 +92,7 @@ class Transaction
   end
 
   # allows access to merchant properties for view purposes
-  def self.tag()
+  def tag()
     sql = "SELECT * FROM tags
     WHERE id = $1;"
     values = [@tag_id]
