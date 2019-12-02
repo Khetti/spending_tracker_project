@@ -6,6 +6,7 @@ require_relative("../models/tag.rb")
 require_relative("../models/merchant.rb")
 also_reload("../models/*")
 
+# link to page to display all transactions
 get '/transactions' do
   @transactions = Transaction.all()
   erb (:"transactions/index")
