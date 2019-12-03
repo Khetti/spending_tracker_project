@@ -12,10 +12,23 @@ get '/transactions' do
   erb (:"transactions/index")
 end
 
+# SORT
+# sorts all transactions by newest to oldest, then returns to index
+get '/transactions/sort/new-old' do
+  @transactions = Transaction.newest_oldest()
+  erb (:"transactions/index")
+end
+
+# sorts all transactions by oldest to newest, then returns to index
+get '/transactions/sort/old-new' do
+  @transactions = Transaction.oldest_newest()
+  erb (:"transactions/index")
+end
+
 # DESTROY
 post '/transactions/:id/delete' do
   Transaction.delete(params[:id])
-  redirect to("/transactions")
+  redirect to('/transactions')
 end
 
 # NEW

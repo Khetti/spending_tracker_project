@@ -31,3 +31,14 @@
             <option value="<%= @timestamp %>">Timestamp</option>
         </select>
       </label>
+
+
+      <form action="/transactions" method="post">
+        <label>
+            <select>
+              <option value="/transactions/sort/new-old">Newest - Oldest</option>
+              <option value="/transactions/sort/old-new">Oldest - Newest</option>
+          </select>
+        </label>
+        <input type="submit" value="Sort">
+      </form>

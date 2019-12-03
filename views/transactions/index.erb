@@ -1,7 +1,11 @@
 <h1>All Transactions</h1>
 <ul>
+  <p><b>Budget: £</b></p>
   <p><b>Total Spend: £<%= Transaction.total() %></b></p>
-  
+
+  <a href="/transactions/sort/new-old">Newest - Oldest</a><br>
+  <a href="/transactions/sort/old-new">Oldest - Newest</a><br>
+
   <% @transactions.each do |transaction| %>
     <p>Merchant: <%= transaction.merchant.name %></p>
     <p>Amount: £<%= transaction.amount %></p>

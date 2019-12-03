@@ -57,13 +57,15 @@ class Transaction
   def self.newest_oldest()
     sql = "SELECT * FROM transactions
     ORDER BY timestamp DESC;"
-    SqlRunner.run(sql)
+    results = SqlRunner.run(sql)
+    return results.map{ |transaction| Transaction.new(transaction) }
   end
 
   def self.oldest_newest()
     sql = "SELECT * FROM transactions
     ORDER BY timestamp ASC;"
-    SqlRunner.run(sql)
+    results = SqlRunner.run(sql)
+    return results.map{ |transaction| Transaction.new(transaction) }
   end
 
   # assigns a Time object to the timestamp property within a new transaction
