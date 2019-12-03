@@ -50,30 +50,34 @@ tag4.save()
 transaction1 = Transaction.new({
   "amount" => 19.99,
   "merchant_id" => merchant1.id,
-  "tag_id" => tag1.id
+  "tag_id" => tag1.id,
+  "timestamp" => Time.now()
 })
 transaction1.save()
 
 transaction2 = Transaction.new({
   "amount" => 23.36,
   "merchant_id" => merchant2.id,
-  "tag_id" => tag2.id
+  "tag_id" => tag2.id,
+  "timestamp" => Time.now()
 })
 transaction2.save()
 
 transaction3 = Transaction.new({
   "amount" => 10.99,
   "merchant_id" => merchant3.id,
-  "tag_id" => tag3.id
+  "tag_id" => tag3.id,
+  "timestamp" => Time.now()
 })
 transaction3.save()
 
 transaction4 = Transaction.new({
   "amount" => 320.72,
   "merchant_id" => merchant4.id,
-  "tag_id" => tag4.id
+  "tag_id" => tag4.id,
+  "timestamp" => Time.now()
 })
 transaction4.save()
-  
+
 binding.pry
 nil

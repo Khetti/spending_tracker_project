@@ -2,13 +2,14 @@ require_relative('../db/sql_runner')
 
 class Transaction
 
-  attr_reader :id, :amount, :merchant_id, :tag_id
+  attr_reader :id, :amount, :merchant_id, :tag_id, :timestamp
 
   def initialize(details)
     @id = details['id'].to_i if details['id']
     @amount = details['amount']
     @merchant_id = details['merchant_id'].to_i
     @tag_id = details['tag_id'].to_i
+    @timestamp = details['timestamp']
   end
 
   def save()
@@ -16,14 +17,15 @@ class Transaction
     (
       amount,
       merchant_id,
-      tag_id
+      tag_id,
+      timestamp
     )
     VALUES
     (
-      $1, $2, $3
+      $1, $2, $3, $4
     )
     RETURNING id;"
-    values = [@amount, @merchant_id, @tag_id]
+    values = [@amount, @merchant_id, @tag_id, @timestamp]
     results = SqlRunner.run(sql, values)
     @id = results.first()['id'].to_i
   end
@@ -50,6 +52,11 @@ class Transaction
     sql = "SELECT * FROM transactions;"
     results = SqlRunner.run(sql)
     return results.map{ |transaction| Transaction.new(transaction) }
+  end
+
+  def self.newest_oldest()
+    sql = "SELECT * FROM transactions
+    ORDER BY timestamp DESC;"
   end
 
   # return a specific transaction by id

@@ -4,6 +4,7 @@
     <p>Merchant: <%= @transaction.merchant.name %></p>
     <p>Amount: £<%= @transaction.amount %></p>
     <p>Tags: <%= @transaction.tag.type %></p>
+    <p>Time: <%= @transaction.timestamp %></p>
     <p>
       <a href="/transactions/<%= @transaction.id %>/edit">Edit</a>
     <p>
