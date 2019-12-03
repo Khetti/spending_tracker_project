@@ -1,6 +1,7 @@
 <h1>New Transaction</h1>
 <ul>
   <p><b>Budget: £<%= @user.report_budget %></b></p>
+  <a href="/users/<%= @user.id %>/edit">Update Budget</a>
   <p><b>Total Spend: £<%= Transaction.total() %></b></p>
 
 <form action="/transactions" method="post">
