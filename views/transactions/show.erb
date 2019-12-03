@@ -1,6 +1,8 @@
 <h1>Transaction <%= @transaction.id %></h1>
 <ul>
-
+  <p><b>Budget: £</b></p>
+  <p><b>Total Spend: £<%= Transaction.total() %></b></p>
+  
     <p>Merchant: <%= @transaction.merchant.name %></p>
     <p>Amount: £<%= @transaction.amount %></p>
     <p>Tags: <%= @transaction.tag.type %></p>

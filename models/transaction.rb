@@ -2,13 +2,14 @@ require_relative('../db/sql_runner')
 
 class Transaction
 
-  attr_reader :id, :amount, :merchant_id, :tag_id, :timestamp
+  attr_reader :id, :amount, :merchant_id, :tag_id, :user_id, :timestamp
 
   def initialize(details)
     @id = details['id'].to_i if details['id']
     @amount = details['amount']
     @merchant_id = details['merchant_id'].to_i
     @tag_id = details['tag_id'].to_i
+    @user_id = details['user_id'].to_i
     @timestamp = details['timestamp']
   end
 
@@ -18,14 +19,15 @@ class Transaction
       amount,
       merchant_id,
       tag_id,
+      user_id,
       timestamp
     )
     VALUES
     (
-      $1, $2, $3, $4
+      $1, $2, $3, $4, $5
     )
     RETURNING id;"
-    values = [@amount, @merchant_id, @tag_id, @timestamp]
+    values = [@amount, @merchant_id, @tag_id, @user_id, @timestamp]
     results = SqlRunner.run(sql, values)
     @id = results.first()['id'].to_i
   end
@@ -37,13 +39,14 @@ class Transaction
     (
       amount,
       merchant_id,
-      tag_id
+      tag_id,
+      user_id
     ) =
     (
-      $1, $2, $3
+      $1, $2, $3, $4
     )
-    WHERE id = $4;"
-    values = [@amount, @merchant_id, @tag_id, @id]
+    WHERE id = $5;"
+    values = [@amount, @merchant_id, @tag_id, @user_id, @id]
     SqlRunner.run(sql, values)
   end
 

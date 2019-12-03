@@ -4,6 +4,7 @@ require("pry")
 require_relative("../models/transaction.rb")
 require_relative("../models/tag.rb")
 require_relative("../models/merchant.rb")
+require_relative("../models/user.rb")
 also_reload("../models/*")
 
 # INDEX
@@ -35,7 +36,6 @@ end
 get '/transactions/new' do
   @merchants = Merchant.all()
   @tags = Tag.all()
-  @timestamp = Time.now()
   erb(:"transactions/new")
 end
 
