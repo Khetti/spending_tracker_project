@@ -31,15 +31,9 @@ class User
 
   def update()
     sql = "UPDATE users
-    SET
-    (
-      budget
-    ) =
-    (
-      $1
-    )
+    SET budget = $1
     WHERE id = $2;"
-    values = [@budget]
+    values = [@budget, @id]
     SqlRunner.run(sql, values)
   end
 
