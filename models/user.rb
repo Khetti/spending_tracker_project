@@ -29,6 +29,22 @@ class User
     @id = results.first()['id'].to_i
   end
 
-  
+  def update()
+    sql = "UPDATE users
+    SET
+    (
+      budget
+    ) =
+    (
+      $1
+    )
+    WHERE id = $2;"
+    values = [@budget]
+    SqlRunner.run(sql, values)
+  end
+
+  def report_budget()
+    
+  end
 
 end
