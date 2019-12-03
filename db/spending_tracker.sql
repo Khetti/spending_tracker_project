@@ -1,7 +1,7 @@
 DROP TABLE transactions;
+DROP TABLE users;
 DROP TABLE merchants;
 DROP TABLE tags;
-DROP TABLE users;
 
 CREATE TABLE merchants
 (
@@ -18,7 +18,7 @@ CREATE TABLE tags
 CREATE TABLE users
 (
   id SERIAL PRIMARY KEY,
-  budget DECIMAL
+  budget DECIMAL(9,2)
 );
 
 CREATE TABLE transactions

@@ -2,7 +2,7 @@ require_relative('../db/sql_runner')
 
 class User
 
-  attr_reader :budget
+  attr_reader :id, :budget
 
   def initialize(details)
     @id = details['id'].to_i if details['id']
@@ -28,5 +28,7 @@ class User
     results = SqlRunner.run(sql, values)
     @id = results.first()['id'].to_i
   end
+
+  
 
 end
