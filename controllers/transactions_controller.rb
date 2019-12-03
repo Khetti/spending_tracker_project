@@ -10,6 +10,7 @@ also_reload("../models/*")
 # INDEX
 get '/transactions' do
   @transactions = Transaction.all()
+  @user = User.find(1)
   erb (:"transactions/index")
 end
 
@@ -36,6 +37,7 @@ end
 get '/transactions/new' do
   @merchants = Merchant.all()
   @tags = Tag.all()
+  @user = User.find(1)
   erb(:"transactions/new")
 end
 
@@ -44,6 +46,7 @@ get '/transactions/:id/edit' do
   @transaction = Transaction.find(params[:id])
   @merchants = Merchant.all()
   @tags = Tag.all()
+  @user = User.find(1)
   erb(:"transactions/edit")
 end
 
@@ -56,6 +59,7 @@ end
 # SHOW
 get '/transactions/:id' do
   @transaction = Transaction.find(params[:id])
+  @user = User.find(1)
   erb(:"transactions/show")
 end
 

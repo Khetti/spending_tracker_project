@@ -1,6 +1,6 @@
 <h1>All Transactions</h1>
 <ul>
-  <p><b>Budget: £</b></p>
+  <p><b>Budget: £<%= @user.report_budget %></b></p>
   <p><b>Total Spend: £<%= Transaction.total() %></b></p>
 
   <a href="/transactions/sort/new-old">Newest - Oldest</a><br>

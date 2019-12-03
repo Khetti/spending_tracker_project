@@ -43,8 +43,16 @@ class User
     SqlRunner.run(sql, values)
   end
 
+  def self.find(id)
+    sql = "SELECT * FROM users
+    WHERE id = $1;"
+    values = [id]
+    results = SqlRunner.run(sql, values)
+    return User.new(results.first)
+  end
+
   def report_budget()
-    
+    return @budget
   end
 
 end
