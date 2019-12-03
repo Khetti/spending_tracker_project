@@ -7,6 +7,7 @@ require("pry")
 Transaction.delete_all()
 Merchant.delete_all()
 Tag.delete_all()
+User.delete_all()
 
 merchant1 = Merchant.new({
   "name" => "Scotrail"
@@ -89,6 +90,11 @@ transaction4 = Transaction.new({
   "timestamp" => Time.now()
 })
 transaction4.save()
+
+user1 = User.new({
+  "budget" => 0.00
+})
+user1.save()
 
 binding.pry
 nil
