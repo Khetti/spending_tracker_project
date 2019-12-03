@@ -27,6 +27,11 @@ merchant4 = Merchant.new({
 })
 merchant4.save()
 
+merchant5 = Merchant.new({
+  "name" => "Games Workshop"
+})
+merchant5.save()
+
 tag1 = Tag.new({
   "type" => "Travel"
 })
@@ -47,11 +52,16 @@ tag4 = Tag.new({
 })
 tag4.save()
 
+tag5 = Tag.new({
+  "type" => "Hobby & Interest"
+  })
+tag5.save()
+
 transaction1 = Transaction.new({
   "amount" => 19.99,
   "merchant_id" => merchant1.id,
   "tag_id" => tag1.id,
-  "timestamp" => Time.now()
+  "timestamp" => "2019-12-01 09:32:08 +0000"
 })
 transaction1.save()
 
@@ -59,7 +69,7 @@ transaction2 = Transaction.new({
   "amount" => 23.36,
   "merchant_id" => merchant2.id,
   "tag_id" => tag2.id,
-  "timestamp" => Time.now()
+  "timestamp" => "2019-11-30 13:37:54 +0000"
 })
 transaction2.save()
 
@@ -67,7 +77,7 @@ transaction3 = Transaction.new({
   "amount" => 10.99,
   "merchant_id" => merchant3.id,
   "tag_id" => tag3.id,
-  "timestamp" => Time.now()
+  "timestamp" => "2019-12-02 17:41:22 +0000"
 })
 transaction3.save()
 
