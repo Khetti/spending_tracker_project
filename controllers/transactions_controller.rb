@@ -49,6 +49,7 @@ end
 # CREATE
 post '/transactions' do
   transaction = Transaction.new(params)
+  transaction.add_time()
   transaction.save()
   redirect to("/transactions")
 end

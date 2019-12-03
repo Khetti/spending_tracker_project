@@ -57,6 +57,18 @@ class Transaction
   def self.newest_oldest()
     sql = "SELECT * FROM transactions
     ORDER BY timestamp DESC;"
+    SqlRunner.run(sql)
+  end
+
+  def self.oldest_newest()
+    sql = "SELECT * FROM transactions
+    ORDER BY timestamp ASC;"
+    SqlRunner.run(sql)
+  end
+
+  # assigns a Time object to the timestamp property within a new transaction
+  def add_time()
+    @timestamp = Time.now()
   end
 
   # return a specific transaction by id
