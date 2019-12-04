@@ -18,12 +18,14 @@ end
 # sorts all transactions by newest to oldest, then returns to index
 get '/transactions/sort/new-old' do
   @transactions = Transaction.newest_oldest()
+  @user = User.find(1)
   erb (:"transactions/index")
 end
 
 # sorts all transactions by oldest to newest, then returns to index
 get '/transactions/sort/old-new' do
   @transactions = Transaction.oldest_newest()
+  @user = User.find(1)
   erb (:"transactions/index")
 end
 

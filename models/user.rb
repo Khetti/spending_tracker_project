@@ -45,8 +45,18 @@ class User
     return User.new(results.first)
   end
 
+  # method to return budget number and check against total
+  # for some reason, numbers >=1000 cause a budget exceeded error
   def report_budget()
-    return @budget
+    total = Transaction.total()
+    case
+      when total > (@budget * 0.75) && total < @budget
+        return "#{@budget} Watch your spending; you're close to your budget."
+      when @budget < total
+        return "#{@budget} Warning! Budget Exceeded!"
+      when @budget > total
+        return "#{@budget} On track to meet your budget."
+    end
   end
 
 end

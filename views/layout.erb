@@ -1,18 +1,19 @@
 <!DOCTYPE html>
 <html>
-<head>
-<h1>Spending Tracker</h1>
-</head>
-<body>
-<nav>
-  <ul>
-    <a href="/">Homepage</a><br>
-    <a href="/transactions/new">New Transaction</a><br>
-    <a href="/transactions">All Transactions</a><br>
-    <a href="/merchants">Manage Merchants</a><br>
-    <a href="/tags">Manage Tags</a><br>
-  </ul>
-</nav>
-<%= yield %>
-</body>
+  <head>
+    <link rel="stylesheet" type="text/css" href="/styles/structure.css">
+    <h1>Spending Tracker</h1>
+  </head>
+  <body>
+    <nav>
+      <ul>
+        <a href="/">Homepage</a><br>
+        <a href="/transactions/new">New Transaction</a><br>
+        <a href="/transactions">All Transactions</a><br>
+        <a href="/merchants">Manage Merchants</a><br>
+        <a href="/tags">Manage Tags</a><br>
+      </ul>
+    </nav>
+  <%= yield %>
+  </body>
 </html>
